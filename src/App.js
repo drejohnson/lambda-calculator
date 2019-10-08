@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import './App.css';
 // STEP 4 - import the button and display components
 // Don't forget to import any extra css/scss files you build into the correct component
@@ -18,15 +18,21 @@ function App() {
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
 
+  const [displayValue, setDisplayValue] = useState(0);
+
+  function updateValue(n) {
+    return setDisplayValue(n);
+  }
+
   return (
     <div className='container'>
       <Logo />
       <div className='App'>
-        <Display />
+        <Display update={updateValue} number={displayValue} />
         <div className='functions'>
           <div className='left-area'>
             <Specials />
-            <Numbers />
+            <Numbers update={updateValue} />
           </div>
           <div className='right-area'>
             <Operators />
