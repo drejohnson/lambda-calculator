@@ -1,22 +1,82 @@
 .container {
-    background-color: #c00025;
-    width: 100%;
-    max-width: 550px;
-    border-radius: 15px;
-    border: 2px solid grey;
-    padding-bottom: 25px;
+  background-color: #c00025;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 15px;
+  border: 2px solid grey;
+  padding-bottom: 25px;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .display {
-    margin-top: 25px;
-    height: 100px;
-    width: 450px;
-    border-radius: 50px;
-    color: white;
-    background-color: #322c2d;
-    box-shadow: 1px 1px #322c2d;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding-right: 8%;
-    font-size: 5.0rem;
-  }
+  margin-top: 25px;
+  height: 100px;
+  width: 450px;
+  border-radius: 50px;
+  color: white;
+  background-color: #322c2d;
+  box-shadow: 1px 1px #322c2d;
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: flex-end; */
+  padding-right: 8%;
+  font-size: 5.0rem;
+}
+
+.functions {
+  display: flex;
+  width: 450px;
+}
+
+.functions button {
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  width: 95px;
+  height: 95px;
+  border-radius: 100%;
+  box-shadow: -2px 4px 5px 0px rgba(0,0,0,0.75);
+  padding: 20px;
+  margin: 10px 8px;
+}
+
+.left-area {
+  display: flex;
+  flex-direction: column
+}
+
+.right-area {
+  display: flex;
+}
+
+.special {
+  display: flex;
+}
+
+.special button {
+  background-color: #2061b0;
+}
+
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.numbers button {
+  background-color: #113b78;
+}
+
+.operators {
+  display: flex;
+  flex-direction: column;
+}
+
+.operators button {
+  background-color: #45b5e5;
+}
