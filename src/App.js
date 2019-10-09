@@ -11,6 +11,8 @@ import Operators from './components/ButtonComponents/OperatorButtons/Operators';
 // Logo has already been provided for you. Do the same for the remaining components
 import Logo from './components/DisplayComponents/Logo';
 
+import { numbers, operators, specials } from './data';
+
 function App() {
   // STEP 5 - After you get the components displaying using the provided data file, write your state hooks here.
   // Once the state hooks are in place write some functions to hold data in state and update that data depending on what it needs to be doing
@@ -18,24 +20,47 @@ function App() {
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
 
-  const [displayValue, setDisplayValue] = useState(0);
+  const [currentNumber, setCurrentNumber] = useState('0');
+  const [operation, setOperation] = useState(false);
 
-  function updateValue(n) {
-    return setDisplayValue(n);
+  function updateValue(number) {
+    if (currentNumber !== '0') {
+      setCurrentNumber(currentNumber + number);
+      setOperation(false);
+    } else {
+      setCurrentNumber(number);
+    }
+  }
+
+  function handleOperation(operator) {
+    if (operator) {
+      setCurrentNumber(currentNumber + operator);
+      setOperation(operator);
+    } else {
+      const newNumber = currentNumber.slice(0, currentNumber.length - 1);
+      setCurrentNumber(newNumber + operator);
+    }
+
+    if (operator === '=') {
+      const result = currentNumber.includes('.')
+        ? eval(currentNumber).toFixed(2)
+        : eval(currentNumber);
+      setCurrentNumber(result);
+    }
   }
 
   return (
     <div className='container'>
       <Logo />
       <div className='App'>
-        <Display update={updateValue} number={displayValue} />
+        <Display value={currentNumber} />
         <div className='functions'>
           <div className='left-area'>
             <Specials />
-            <Numbers update={updateValue} />
+            <Numbers data={numbers} update={updateValue} />
           </div>
           <div className='right-area'>
-            <Operators />
+            <Operators data={operators} update={handleOperation} />
           </div>
         </div>
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
